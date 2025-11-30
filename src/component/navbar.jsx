@@ -193,7 +193,20 @@ useEffect(() => {
             >
               Login
             </Link>
-          )}
+          )}{user && (
+  <span
+    onClick={() => {
+      handleLogout();
+      setActiveItem("");
+      setOpenMenu(false);
+    }}
+    className="text-danger fw-bold"
+    style={{ padding: "12px 0", display: "block", cursor: "pointer" }}
+  >
+    Logout
+  </span>
+)}
+
 
         </div>
 
