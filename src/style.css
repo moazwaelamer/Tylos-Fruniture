@@ -1005,16 +1005,17 @@
   .trending-slider .slick-list {
     overflow: visible !important;    /* خلي السلايدر يظهر بالكامل */
     padding: 0 4px !important;
+      padding: 0 6px !important;
+  box-sizing: border-box !important;
   }
-  .slick-track {
-    display: flex !important;
-  }
+
 
   .slick-slide {
     height: auto !important;
   }
   .featured-card {
     width: 100% !important;
+     margin: 0 10px !important;
     min-width: 260px !important;
    max-width: 260px !important;
     height: 380px !important;     
