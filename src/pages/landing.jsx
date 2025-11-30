@@ -173,34 +173,60 @@ useEffect(() => {
         </div>
       </div>
 
-      {/* ========================= TRENDING SECTION ========================= */}
-     <div className="section-block full-width section-inner" >
+     {/* ========================= TRENDING SECTION ========================= */}
+<div className="section-block full-width section-inner">
   <h1 className="page-title">Trending Now</h1>
-  <Slider {...featuredSettings} className="trending-slider">
-    {Object.keys(products)
-      .filter((sec) => !["bedrooms", "sofas", "workplace", "kitchens", "livingroomsets"].includes(sec))
-      .flatMap((sec) => products[sec].slice(0, 1))
-      .map((item) => {
-        const correctSection = Object.keys(products).find((sec) =>
-          products[sec].some((p) => p.id === item.id)
-        );
-        return (
-          <div key={item.id} className="featured-card">
-            <img loading="lazy" src={item.image} alt={item.title} />
-            <h3>{item.title}</h3>
-            <button
-              className="slide-btnn"
-              onClick={() => navigate(`/product/${correctSection}/${item.id}`)}
-            >
-              View
-            </button>
-          </div>
-        );
-      })}
-  </Slider>
+
+  {/* ====== موبايل: Scroll أفقي بدل Slider ====== */}
+  {window.innerWidth <= 480 ? (
+    <div className="trending-mobile">
+      {Object.keys(products)
+        .filter((sec) => !["bedrooms","sofas","workplace","kitchens","livingroomsets"].includes(sec))
+        .flatMap((sec) => products[sec].slice(0, 1))
+        .map((item) => {
+          const correctSection = Object.keys(products).find((sec) =>
+            products[sec].some((p) => p.id === item.id)
+          );
+          return (
+            <div key={item.id} className="featured-card mobile-card">
+              <img loading="lazy" src={item.image} alt={item.title} />
+              <h3>{item.title}</h3>
+              <button
+                className="slide-btnn"
+                onClick={() => navigate(`/product/${correctSection}/${item.id}`)}
+              >
+                View
+              </button>
+            </div>
+          );
+        })}
+    </div>
+  ) : (
+    /* ====== كمبيوتر: Slider شغال عادي ====== */
+    <Slider {...featuredSettings} className="trending-slider">
+      {Object.keys(products)
+        .filter((sec) => !["bedrooms","sofas","workplace","kitchens","livingroomsets"].includes(sec))
+        .flatMap((sec) => products[sec].slice(0, 1))
+        .map((item) => {
+          const correctSection = Object.keys(products).find((sec) =>
+            products[sec].some((p) => p.id === item.id)
+          );
+          return (
+            <div key={item.id} className="featured-card">
+              <img loading="lazy" src={item.image} alt={item.title} />
+              <h3>{item.title}</h3>
+              <button
+                className="slide-btnn"
+                onClick={() => navigate(`/product/${correctSection}/${item.id}`)}
+              >
+                View
+              </button>
+            </div>
+          );
+        })}
+    </Slider>
+  )}
 </div>
-
-
     </div>
   );
 }

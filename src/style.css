@@ -1047,6 +1047,25 @@
     bottom: -5px !important;
   }
 }
+/* Trending Mobile Horizontal Scroll */
+.trending-mobile {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 10px 5px;
+  scroll-snap-type: x mandatory;
+}
+
+.trending-mobile::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile-card {
+  min-width: 250px !important;
+  max-width: 250px !important;
+  scroll-snap-align: start;
+}
+
   /* =========================== TABLET (max 768px) =========================== */
   @media (max-width: 768px) {
     .slide-content {
